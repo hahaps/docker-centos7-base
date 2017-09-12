@@ -13,4 +13,6 @@ RUN yum install -y gcc python-devel python-pip
 
 RUN pip install -U pip
 
+RUN pip install -U setuptools
+
 CMD ["/bin/bash"]
