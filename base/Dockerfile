@@ -7,7 +7,7 @@ LABEL name="CentOS7 Base Image for dev" \
 MAINTAINER Li Xipeng <lixipeng@prophetech.cn>
 
 # Install epel-release
-RUN yum install epel-release
+RUN yum install -y epel-release
 # Install pip and gcc
 RUN yum install -y gcc python-devel python-pip
 
