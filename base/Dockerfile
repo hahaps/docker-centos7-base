@@ -6,7 +6,9 @@ LABEL name="CentOS7 Base Image for dev" \
 
 MAINTAINER Li Xipeng <lixipeng@prophetech.cn>
 
-# Install git
+# Install pip and gcc
 RUN yum install -y gcc python-devel python-pip
+
+RUN pip install -U pip
 
 CMD ["/bin/bash"]
