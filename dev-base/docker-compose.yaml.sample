@@ -1,0 +1,37 @@
+version: '1.0'
+services:
+  mysql:
+    image: mysql:5.7
+    volumes:
+      - "~/.data/db:/var/lib/mysql"
+    restart: always
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+  rabbitmq:
+    image: rabbitmq:3-management
+    volumes:
+      - "~/.data/db:/var/lib/mysql"
+    restart: always
+    ports:
+      - "5672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+      RABBITMQ_DEFAULT_VHOST: /
+  keystone:
+    image: krystism/openstack-keystone
+    ports:
+      - "5000:5000"
+      - "35357:35357"
+    depends_on:
+      - mysql
+    links:
+      - mysql
+    restart: always
+    environment:
+      ADMIN_TENANT_NAME: admin
+      ADMIN_USER_NAME: admin
+      ADMIN_PASSWORD: admin_pass
+      ADMIN_EMAIL: lixipeng@prophetech.cn
