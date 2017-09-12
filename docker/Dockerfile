@@ -10,9 +10,9 @@ LABEL name="CentOS7 Base Image with git" \
 MAINTAINER Li Xipeng <lixipeng@prophetech.cn>
 
 # Use centos7 repo of ali
-RUN rm -rf /etc/yum.repos.d/* \
-    && mv /Centos-7.repo /etc/yum.repos.d/ \
-    && yum clean all && yum makecache
+# RUN rm -rf /etc/yum.repos.d/* \
+#     && mv /Centos-7.repo /etc/yum.repos.d/ \
+#     && yum clean all && yum makecache
 
 # Install git
 RUN yum install -y git
