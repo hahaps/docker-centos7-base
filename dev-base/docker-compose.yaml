@@ -1,4 +1,4 @@
-version: '1.0'
+version: '2.0'
 services:
   mysql:
     image: mysql:5.7
@@ -21,7 +21,7 @@ services:
       RABBITMQ_DEFAULT_PASS: guest
       RABBITMQ_DEFAULT_VHOST: /
   keystone:
-    image: krystism/openstack-keystone
+    image: monasca/keystone:1.1.2
     ports:
       - "5000:5000"
       - "35357:35357"
@@ -31,7 +31,9 @@ services:
       - mysql
     restart: always
     environment:
-      ADMIN_TENANT_NAME: admin
-      ADMIN_USER_NAME: admin
-      ADMIN_PASSWORD: admin_pass
-      ADMIN_EMAIL: lixipeng@prophetech.cn
+      KEYSTONE_USERNAME: admin
+      KEYSTONE_PROJECT: admin
+      KEYSTONE_PASSWORD: admin_pass
+      KEYSTONE_ROLE: admin
+      KEYSTONE_REGION: RegionOne
+      KEYSTONE_HOST: 192.168.10.102
